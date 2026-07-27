@@ -7,7 +7,7 @@ async function loginUsuario(event) {
 
     const payload = {
         email: document.getElementById('login-email').value.trim(),
-        senha: document.getElementById('login-senha').value,
+        password: document.getElementById('login-senha').value,
     };
 
     try {
