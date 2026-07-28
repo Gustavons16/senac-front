@@ -1104,4 +1104,34 @@ footer {
         flex-direction: row;
         align-items: center;
     }
+
+}
+
+#img-logo {
+    width: 50px;
+    height: 50px;
+}
+
+#logo-login {
+     width: 200px;
+    height: 200px;
+}
+#div-logo {
+    text-align: center;
+}
+  
+#titulo-pratosdia
+{
+    text-align: center;
+    width: 100%;
+}
+.img-produtosdia
+{
+
+height: 170px;
+max-width: 100%;
+}
+.img-centralizar {
+    text-align: center;
+    width: 100%;
 }
