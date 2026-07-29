@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -22,11 +23,18 @@
             </a>
             <div class="topbar-nav">
                 <a class="nav-link active" href="index.html">Início</a>
-                <a class="nav-link " href="login.html">Login</a>
-                <a class="nav-link" href="cadastro.html">Cadastro</a>
+                <a class="nav-link" href="cardapio.html">Cardápio</a>
+                <a class="nav-link " href="sobre.html">Sobre</a>
+                <a class="nav-link" href="contato.html">Contato</a>
+        
             </div>
             <div class="topbar-actions">
-                <button id="topbar-logout" class="secondary small is-hidden" type="button">Sair</button>
+                <a id="btn-sair" class="btn  secondary small is-hidden" title="Sair" type="button">
+                    <i class="bi bi-box-arrow-right"></i>
+                </a>
+                    <a href="carrinho.html" id="btn-carrinho">
+                        <i class="bi bi-basket2-fill"></i>
+                    </a>
             </div>
         </div>
     </nav>
@@ -72,6 +80,38 @@
                     <span class="ql-desc">R$ 26,60</span>
                 </a>
             </div>
+
+            <div class="quick-links">
+                <a class="quick-link-item" href="cadastro.html">
+                     <div class="img-centralizar">
+                        <img class="img-produtosdia" src="./img/exemplos/img1.jpg">
+                    </div>
+                    <span class="ql-title">Torresmo</span>
+                    <span class="ql-desc">R$ 15,00</span>
+                </a>
+                <a class="quick-link-item" href="login.html">
+                    <div class="img-centralizar">
+                        <img class="img-produtosdia" src="./img/exemplos/img2.png">
+                    </div>
+                    <span class="ql-title">Feijoada</span>
+                    <span class="ql-desc">R$ 20,00</span>
+                </a>
+                <a class="quick-link-item" href="perfil.html">
+                     <div class="img-centralizar">
+                        <img class="img-produtosdia" src="./img/exemplos/img3.jpg">
+                    </div>
+                    <span class="ql-title">Moqueca</span>
+                    <span class="ql-desc">R$ 30,00</span>
+                </a>
+                <a class="quick-link-item" href="tarefas.html">
+                     <div class="img-centralizar">
+                        <img class="img-produtosdia" src="./img/exemplos/img4.jpg">
+                    </div>
+                    <span class="ql-title">Yakisoba</span>
+                    <span class="ql-desc">R$ 26,60</span>
+                </a>
+            </div>
+
         </section>
 
        

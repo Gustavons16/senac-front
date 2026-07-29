@@ -20,29 +20,22 @@ function setupTopbarAuth() {
     if (!nav) return;
 
     const token = getToken();
-    const links = Array.from(nav.querySelectorAll('.nav-link'));
 
-    links.forEach((link) => {
-        const href = (link.getAttribute('href') || '').trim();
-        const show = href === 'index.html'
-            || href === 'tarefas.html'
-            || href === 'login.html'
-            || href === 'cadastro.html'
-            || (token && href === 'perfil.html');
-
-        link.classList.toggle('d-none', !show);
-    });
-
-    const topbarLogout = document.getElementById('topbar-logout');
-    if (topbarLogout) {
-        if (token) {
-            topbarLogout.classList.remove('is-hidden');
-            topbarLogout.classList.remove('d-none');
-        } else {
-            topbarLogout.classList.add('is-hidden');
-            topbarLogout.classList.add('d-none');
-        }
+    const btnSair = document.getElementById('btn-sair');
+    const btnLogin = document.getElementById('btn-login');
+   
+    if (token) {
+        if(btnSair)
+            btnSair.classList.remove('is-hidden');
+        if(btnLogin)   
+            btnLogin.classList.add('is-hidden');
+    } else {
+        if(btnSair)   
+            btnSair.classList.add('is-hidden');
+        if(btnLogin)
+            btnLogin.classList.remove('is-hidden');
     }
+    
 }
 
 function getResultadoArea() {
@@ -122,7 +115,7 @@ function logout(redirect = true) {
 window.addEventListener('DOMContentLoaded', () => {
     setupTopbarAuth();
 
-    const topbarLogout = document.getElementById('topbar-logout');
+    const topbarLogout = document.getElementById('btn-sair');
     if (topbarLogout) {
         topbarLogout.addEventListener('click', (event) => {
             event.preventDefault();

@@ -1135,3 +1135,34 @@ max-width: 100%;
     text-align: center;
     width: 100%;
 }
+#btn-carrinho {
+    font-size: 30px;
+    color: var(--color-primary);
+    margin-left: 30px;
+
+}
+#btn-sair {
+
+    font-size: 30px;
+}
+
+.item-produto
+ {
+    width: 45%;
+    border: 1px solid #333;
+    display: inline-block;
+    border-radius: 22px;
+}
+.item-produto img{
+        height: 170px;
+    max-width: 100%;
+    border-radius: 20px;
+
+}
+.item-produto .title{
+
+    font-size: 16px;
+}
+.item-produto .info{
+padding: 16px 20px;
+}
