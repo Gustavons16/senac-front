@@ -1148,10 +1148,12 @@ max-width: 100%;
 
 .item-produto
  {
-    width: 45%;
     border: 1px solid #333;
     display: inline-block;
     border-radius: 22px;
+        max-height: 172px;
+    
+
 }
 .item-produto img{
         height: 170px;
@@ -1165,4 +1167,22 @@ max-width: 100%;
 }
 .item-produto .info{
 padding: 16px 20px;
+}
+
+.item-produto .desc{
+    font-size: small;
+}
+
+.item-produto .price {
+    color: green;
+    font-size: larger;
+
+}
+
+.linha-produtos {
+        margin-bottom: 25px;
+}
+
+.bg-red {
+        background: #ff00000a;
 }
