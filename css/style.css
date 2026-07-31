@@ -1186,3 +1186,29 @@ padding: 16px 20px;
 .bg-red {
         background: #ff00000a;
 }
+
+#modal-detalhes-produto .img-produto {
+
+    height: 200px;
+}
+#modal-detalhes-produto .desc-2 {
+    font-size: small;
+        color: gray;
+}
+
+#modal-detalhes-produto .desc {
+        color: gray;
+}
+
+#modal-detalhes-produto .price {
+
+    color:  green
+
+}
+
+.btn-red {
+    background-color: var(--color-primary);
+    color: white
+}
+
+
