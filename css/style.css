@@ -1212,3 +1212,31 @@ padding: 16px 20px;
 }
 
 
+#offcanvasRightLabel {
+text-align: center;
+    width: 100%;
+    margin-top: 20px;
+    
+
+}
+#menu-carrinho .img-produto {
+    width: 81px;
+}
+#menu-carrinho #produtos {
+
+    max-height: 659px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+#menu-carrinho #produtos .row {
+    border-bottom: 1px solid #c6c7c8;
+    margin-bottom: 15px;
+}
+
+#menu-carrinho #resumo-carrinho #valor-total {
+    TEXT-ALIGN: end;
+}
+#resumo-carrinho #btn-finalizar-pedido {
+
+   width: 100%;
+}
