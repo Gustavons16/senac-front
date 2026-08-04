@@ -1152,7 +1152,7 @@ max-width: 100%;
     display: inline-block;
     border-radius: 22px;
         max-height: 172px;
-    
+    width: 100%;
 
 }
 .item-produto img{
@@ -1171,6 +1171,7 @@ padding: 16px 20px;
 
 .item-produto .desc{
     font-size: small;
+    
 }
 
 .item-produto .price {
