@@ -18,7 +18,7 @@ async function carregarCardapio() {
 }
 
 function renderizarCardapio() {
-     const divProduto = document.getElementById('div-produtos');
+    const divProduto = document.getElementById('div-produtos');
 
     divProduto.innerHTML = '';
     if (!produtos.length) {
@@ -28,22 +28,21 @@ function renderizarCardapio() {
 
     divProduto.innerHTML = criarCategoriaHtml();
 
-    
-}
-function criarCategoriaHtml(){
 
-   var categoriaHtml = "";
-   const agrupado = Object.groupBy(produtos, produto => produto.category);
+}
+function criarCategoriaHtml() {
+
+    var categoriaHtml = "";
+    const agrupado = Object.groupBy(produtos, produto => produto.category);
 
     Object.entries(agrupado).forEach(([categoria, listaDeProdutos]) => {
-        categoriaHtml +=  criarProdutosCategoria(categoria,listaDeProdutos)
+        categoriaHtml += criarProdutosCategoria(categoria, listaDeProdutos)
     })
 
-  return categoriaHtml
+    return categoriaHtml
 }
 
-function criarProdutosCategoria(categoria,listaDeProdutos)
-{
+function criarProdutosCategoria(categoria, listaDeProdutos) {
     let produtoshtml = "";
 
     let produtosLinha = [];
@@ -51,8 +50,7 @@ function criarProdutosCategoria(categoria,listaDeProdutos)
     listaDeProdutos.forEach((produto) => {
         produtosLinha.push(produto);
         count++;
-        if(produtosLinha.length == 2 || listaDeProdutos.length == count)
-        {
+        if (produtosLinha.length == 2 || listaDeProdutos.length == count) {
             produtoshtml += criarLinhasProdutos(produtosLinha);
             produtosLinha = []
         }
@@ -71,23 +69,23 @@ function criarProdutosCategoria(categoria,listaDeProdutos)
                 `;
 }
 
-function criarLinhasProdutos(produtosLinha){
+function criarLinhasProdutos(produtosLinha) {
     let produtoshtml = "";
 
-     produtosLinha.forEach((produto) => {
+    produtosLinha.forEach((produto) => {
         produtoshtml += criarCardHtml(produto);
     });
-   
-    return  `<div class="row linha-produtos">
+
+    return `<div class="row linha-produtos">
                 ${produtoshtml}
-            </div>` 
+            </div>`
 }
 function criarCardHtml(produto) {
     const price = produto.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })
     return `
         <div class="col-md-6">
             <a data-bs-toggle="modal" data-bs-target="#modal-detalhes-produto">
-                <div class="item-produto">
+                <div class="item-produto" data-produtoid="${produto.id}">
                     <div class="row">
                         <div class="col-md-6 info">
                             <h4 class="title">${produto.name}</h4>
@@ -114,3 +112,23 @@ window.addEventListener('DOMContentLoaded', async () => {
 
     await carregarCardapio();
 });
+
+
+$(function () {
+
+    $('body').on('click', ".item-produto", async function (e) {
+
+        var produtoid = $(this).data("produtoid")
+
+        const produto = await apiRequest(`/products/produto/${produtoid}`);
+            const price = produto.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })
+
+        $("#titulo-modal").text(produto.name)
+        $("#desc-modal").text(produto.description)
+        $("#price-modal").text(`R$ ${price}`)
+        $("#desc2-modal").text(produto.ingredients)
+        
+
+
+    })
+})
