@@ -4,7 +4,14 @@ var produtos = [];
 
 async function carregarProdutos() {
     try {
-        const resposta = await apiRequest('/products/dayproducts/4/store/1');
+        const hoje = new Date();
+        
+        const diaSemanaExtenso = hoje.toLocaleDateString('pt-BR', { weekday: 'long' });
+        var diaSemana = document.getElementById('dia-semana');
+        diaSemana.innerHTML=diaSemanaExtenso;
+
+        const diaAbreviado = hoje.toLocaleDateString('pt-BR', { weekday: 'short' }).replace('.','');
+        const resposta = await apiRequest( `/products/dayproducts/${diaAbreviado}/store/1`);
 
         if (Array.isArray(resposta)) {
             produtos = resposta;
