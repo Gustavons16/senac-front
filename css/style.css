@@ -1242,10 +1242,17 @@ text-align: center;
    width: 100%;
 }
 #texto-sobre { 
-    margin-top: 50px;
-  
+       font-size: medium;
+    text-align: justify;
 }
+
 
 #titulo-sobre {
     margin-top: 105px;
+    font-weight: bold;
+}
+
+#img-sobre {
+
+    width: 100%;
 }
