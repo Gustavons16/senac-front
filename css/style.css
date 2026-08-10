@@ -1223,13 +1223,13 @@ text-align: center;
 #menu-carrinho .img-produto {
     width: 81px;
 }
-#menu-carrinho #produtos {
+#menu-carrinho #produtos-carrinho {
 
     max-height: 659px;
     overflow-y: auto;
     overflow-x: hidden;
 }
-#menu-carrinho #produtos .row {
+#menu-carrinho #produtos-carrinho .row {
     border-bottom: 1px solid #c6c7c8;
     margin-bottom: 15px;
 }
