@@ -6,14 +6,15 @@ async function carregarCarrinho() {
     try {
         const resposta = await apiRequest('/cart/produtos');
         pedido = resposta
-        renderizarCarrinho(); 
+        renderizarCarrinho();
         atualizarTotalCarrinho();
     } catch (erro) {
     }
 }
 function atualizarTotalCarrinho() {
     const total = pedido.carrinho.total.toLocaleString('pt-BR', { minimumFractionDigits: 2 })
-     $("#valor-total").text(`R$ ${total}`)
+    $("#valor-total").text(`R$ ${total}`)
+     $("#cartid").val(pedido.carrinho.id)
 }
 function renderizarCarrinho() {
     const divCarrinho = document.getElementById('produtos-carrinho');
@@ -29,15 +30,15 @@ function renderizarCarrinho() {
 
 }
 function criarHtmlCarrinho() {
-    var produtosHtml = "" ; 
+    var produtosHtml = "";
     pedido.produtos.forEach((produto) => {
         produtosHtml += criarItemCarrinhoHtml(produto);
     });
     return produtosHtml;
-} 
+}
 
-function  criarItemCarrinhoHtml(produto) {
-   
+function criarItemCarrinhoHtml(produto) {
+
     const price = produto.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })
     return `
             <div class="row">
@@ -65,40 +66,58 @@ window.addEventListener('DOMContentLoaded', async () => {
     await carregarCarrinho();
 });
 
-$(function(){
-    $("#btn-add-carrinho").on("click",async function(){
-        var produtoid= $("#produtoid-modal").val()
-        const resultado = await apiRequest(`/cart/produto/${produtoid}`,{ method: 'POST'});
+$(function () {
+    $("#btn-add-carrinho").on("click", async function () {
+        var produtoid = $("#produtoid-modal").val()
+        const resultado = await apiRequest(`/cart/produto/${produtoid}`, { method: 'POST' });
         mostrarResultado(resultado.mensagem);
-        await  carregarCarrinho();
+        await carregarCarrinho();
 
 
-    }) ;
+    });
 
-     $('body').on('click',".btn-remover-produto",async function(){
-        var productcartid= $(this).data("productcartid")
-        const resultado = await apiRequest(`/cart/productcart/${productcartid}`,{ method: 'DELETE'});
+    $('body').on('click', ".btn-remover-produto", async function () {
+        var productcartid = $(this).data("productcartid")
+        const resultado = await apiRequest(`/cart/productcart/${productcartid}`, { method: 'DELETE' });
         mostrarResultado(resultado.mensagem);
-        await  carregarCarrinho();
+        await carregarCarrinho();
 
 
-    }) ;
+    });
 
-    
 
-     $('body').on('click', ".item-produto", async function (e) {
+
+    $('body').on('click', ".item-produto", async function (e) {
 
         var produtoid = $(this).data("produtoid")
 
 
         const produto = await apiRequest(`/products/produto/${produtoid}`);
-            const price = produto.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })
+        const price = produto.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })
 
         $("#titulo-modal").text(produto.name)
         $("#desc-modal").text(produto.description)
         $("#price-modal").text(`R$ ${price}`)
         $("#desc2-modal").text(produto.ingredients)
         $("#produtoid-modal").val(produto.id)
+
+
+    })
+
+    $('body').on('click', "#btn-finalizar-pedido", async function (e) {
+
+        var cartid = $("#cartid").val()
+        const payload = {
+            status: 'Pedido Feito',
+            
+        };
+
+
+        const resultado = await apiRequest(`/cart/${cartid}/status`,{ method: 'PUT', body: payload});
+        mostrarResultado(resultado.mensagem);
+        await carregarCarrinho();
+
+
 
 
     })
