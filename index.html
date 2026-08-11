@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TaskFlow</title>
-
     <!-- ── ESTILOS ── -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
     <!-- ── NAVBAR ── -->
     <nav class="topbar">
         <div class="topbar-inner">
             <a class="topbar-brand" href="index.html">
-                <img id="img-logo" src="./img/logoquitutesdamonica.jpg"/>
+                <img id="img-logo" src="./img/logoquitutesdamonica.jpg" />
                 <span class="brand-name">Quitutes da <span>Mônica</span></span>
             </a>
             <div class="topbar-nav">
@@ -26,20 +29,21 @@
                 <a class="nav-link" href="cardapio.html">Cardápio</a>
                 <a class="nav-link " href="sobre.html">Sobre</a>
                 <a class="nav-link" href="contato.html">Contato</a>
-        
+
             </div>
             <div class="topbar-actions">
                 <a id="btn-sair" class="btn  secondary small is-hidden" title="Sair" type="button">
                     <i class="bi bi-box-arrow-right"></i>
                 </a>
-                    <a href="carrinho.html" id="btn-carrinho">
-                        <i class="bi bi-basket2-fill"></i>
-                    </a>
+                <a href="#" id="btn-carrinho" data-bs-toggle="offcanvas" data-bs-target="#menu-carrinho"
+                    aria-controls="offcanvasRight">
+                    <i class="bi bi-basket2-fill"></i>
+                </a>
             </div>
         </div>
     </nav>
 
-   
+
     <!-- ── CONTEÚDO ── -->
     <div class="container">
 
@@ -51,50 +55,126 @@
                 </div>
             </div>
             <div class="quick-links" id="div-produtos">
-                <a class="quick-link-item" href="cadastro.html">
-                     <div class="img-centralizar">
-                        <img class="img-produtosdia" src="./img/exemplos/img1.jpg">
-                    </div>
-                    <span class="ql-title">Torresmo</span>
-                    <span class="ql-desc">R$ 15,00</span>
-                </a>
-                <a class="quick-link-item" href="login.html">
-                    <div class="img-centralizar">
-                        <img class="img-produtosdia" src="./img/exemplos/img2.png">
-                    </div>
-                    <span class="ql-title">Feijoada</span>
-                    <span class="ql-desc">R$ 20,00</span>
-                </a>
-                <a class="quick-link-item" href="perfil.html">
-                     <div class="img-centralizar">
-                        <img class="img-produtosdia" src="./img/exemplos/img3.jpg">
-                    </div>
-                    <span class="ql-title">Moqueca</span>
-                    <span class="ql-desc">R$ 30,00</span>
-                </a>
-                <a class="quick-link-item" href="tarefas.html">
-                     <div class="img-centralizar">
-                        <img class="img-produtosdia" src="./img/exemplos/img4.jpg">
-                    </div>
-                    <span class="ql-title">Yakisoba</span>
-                    <span class="ql-desc">R$ 26,60</span>
-                </a>
             </div>
 
-            
+
 
         </section>
 
-       
-       
+
+
+
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="modal-detalhes-produto" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <img class="img-produto" id="img-modal" src="./img/exemplos/img1.jpg">
+
+                        </div>
+                        <div class="col-md-7">
+                            <h4 id="titulo-modal">
+                                Torresmo
+                            </h4>
+                            <p class="desc" id="desc-modal">
+                                Gordura de bacon frita, bem crocante feito com
+                                banha
+                            </p>
+                            <h5 class="price" id="price-modal">R$20,00</h5>
+
+                        </div>
+
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <h5>
+                                Oque acompanha
+                            </h5>
+                            <p class="desc-2" id="desc2-modal">Feijão Tropeiro: Feijão-carioquinha temperado, misturado
+                                com farinha
+                                de mandioca,
+                                couve, ovos, bacon e pedaços de linguiça calabresa.
+                                Costelinha Suína: Costelinha frita e dourada lentamente, finalizada com um toque de
+                                alho.
+                                Torresmo: Torresmo crocante de rolo (tipo pururuca).
+                                Arroz Branco: Arroz soltinho cozido com alho.
+                                Acompanhamentos Frescos: Couve cortada fininha e refogada na manteiga
+                                pedacinhos de mandioca cozida e frita, e gomos de laranja fresca. </p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" id="produtoid-modal" />
+
+                    <button type="button" class="btn btn-red" id="btn-add-carrinho">Adicionar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="menu-carrinho" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasRightLabel">MEU CARRINHO</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div id="produtos-carrinho">
+
+            </div>
+            <div id="resumo-carrinho">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h6>ALGUMA OBSERVAÇÃO?</h6>
+                        <div class="mb-3">
+                            <textarea class="form-control" rows="2"></textarea>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Total</h5>
+
+                    </div>
+                    <div class="col-md-6">
+                        <h5 id="valor-total">R$ 160,00</h5>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-red" id="btn-finalizar-pedido">FINALIZAR PEDIDO</button>
+                        <input type="hidden" id="cartid" />
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
 
     </div>
 
-
- <footer>Quitutes da Mônica · 2026 · Gustavo Nicolau </footer>
+    <footer>Quitutes da Mônica · 2026 · Gustavo Nicolau </footer>
 
     <!-- ── SCRIPTS ── -->
+    <script src="https://code.jquery.com/jquery-4.0.0.js"
+        integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+        integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/api.js"></script>
     <script src="js/pratosdia.js"></script>
+    <script src="js/carrinho.js"></script>
 </body>
+
 </html>

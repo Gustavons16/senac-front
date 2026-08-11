@@ -94,7 +94,7 @@ function criarCardHtml(produto) {
                         </div>
                         <div class="col-md-6">
                             <div class="img-centralizar">
-                                <img class="img-produtosdia" src="./img/exemplos/img1.jpg">
+                                <img class="img-produtosdia" src="${produto.photo}">
                             </div>
                         </div>
                     </div>

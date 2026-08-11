@@ -47,9 +47,9 @@ function criarCardHtml(produto) {
    
     const price = produto.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })
     return `
-       <a class="quick-link-item" href="cadastro.html">
+        <a  data-produtoid="${produto.id}" class="quick-link-item item-produto" data-bs-toggle="modal" data-bs-target="#modal-detalhes-produto">
                 <div class="img-centralizar">
-                <img class="img-produtosdia" src="./img/exemplos/img1.jpg">
+                <img class="img-produtosdia" src="${produto.photo}">
             </div>
             <span class="ql-title">${produto.name}</span>
             <span class="ql-desc">R$ ${price}</span>

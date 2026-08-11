@@ -43,7 +43,7 @@ function criarItemCarrinhoHtml(produto) {
     return `
             <div class="row">
                 <div class="col-md-3">
-                    <img class="img-produto" src="./img/exemplos/img1.jpg">
+                    <img class="img-produto" src="${produto.photo}">
                 </div>
                 <div class="col-md-5">
                     <h6>${produto.name}</h6>
@@ -100,6 +100,7 @@ $(function () {
         $("#price-modal").text(`R$ ${price}`)
         $("#desc2-modal").text(produto.ingredients)
         $("#produtoid-modal").val(produto.id)
+        $("#img-modal").attr("src",produto.photo)
 
 
     })
