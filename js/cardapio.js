@@ -116,19 +116,5 @@ window.addEventListener('DOMContentLoaded', async () => {
 
 $(function () {
 
-    $('body').on('click', ".item-produto", async function (e) {
-
-        var produtoid = $(this).data("produtoid")
-
-        const produto = await apiRequest(`/products/produto/${produtoid}`);
-            const price = produto.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })
-
-        $("#titulo-modal").text(produto.name)
-        $("#desc-modal").text(produto.description)
-        $("#price-modal").text(`R$ ${price}`)
-        $("#desc2-modal").text(produto.ingredients)
-        
-
-
-    })
+   
 })
