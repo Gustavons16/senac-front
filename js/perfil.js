@@ -29,9 +29,9 @@ function atualizarAvatar(src) {
 }
 
 function preencherFormulario(perfil) {
-    if (perfilNome) perfilNome.value = perfil.nome || '';
+    if (perfilNome) perfilNome.value = perfil.name || '';
     if (perfilEmail) perfilEmail.value = perfil.email || '';
-    if (perfilTelefone) perfilTelefone.value = perfil.telefone || '';
+    if (perfilTelefone) perfilTelefone.value = perfil.cellphone || '';
     if (perfilSenha) perfilSenha.value = '';
 }
 
@@ -52,9 +52,9 @@ function renderizarPerfil(perfil) {
     if (perfilInfo) {
         perfilInfo.innerHTML = `
             ${criarItemPerfil('ID', perfil.id)}
-            ${criarItemPerfil('Nome', perfil.nome)}
+            ${criarItemPerfil('Nome', perfil.name)}
             ${criarItemPerfil('E-mail', perfil.email)}
-            ${criarItemPerfil('Telefone', perfil.telefone)}
+            ${criarItemPerfil('Telefone', perfil.cellphone)}
         `;
     }
 
@@ -90,11 +90,11 @@ async function salvarPerfil(event) {
 
     const senha = (perfilSenha?.value || '').trim();
     const formData = new FormData();
-    formData.append('nome', (perfilNome?.value || '').trim());
+    formData.append('name', (perfilNome?.value || '').trim());
     formData.append('email', (perfilEmail?.value || '').trim());
-    formData.append('telefone', (perfilTelefone?.value || '').trim());
+    formData.append('cellphone', (perfilTelefone?.value || '').trim());
 
-    if (senha) formData.append('senha', senha);
+    if (senha) formData.append('password', senha);
     if (fotoSelecionada) formData.append('foto', fotoSelecionada);
 
     try {
@@ -140,4 +140,55 @@ window.addEventListener('DOMContentLoaded', async () => {
 
     atualizarAvatar('');
     await carregarPerfil();
+    await carregarPedidos();
 });
+
+var carrinhos = []
+async function carregarPedidos() {
+    try {
+
+
+        const resposta = await apiRequest(`/cart/carrinhos`);
+
+        if (Array.isArray(resposta)) {
+            carrinhos = resposta;
+        } else {
+            carrinhos = [];
+        }
+
+        renderizarCarrinhos();
+    } catch (erro) {
+    }
+}
+function renderizarCarrinhos() {
+    const tabelaCarrinhos = document.getElementById('lista-carrinhos-tabela');
+
+    tabelaCarrinhos.innerHTML = '';
+    if (!carrinhos.length) {
+        tabelaCarrinhos.innerHTML = '<div class="empty-state"><p>Nenhum pedido encontrado.</p></div>';
+        return;
+    }
+
+    tabelaCarrinhos.innerHTML = criarHtmlCarrinhos();
+
+}
+function criarHtmlCarrinhos() {
+    var carrinhosHtml = "";
+    carrinhos.forEach((carrinho) => {
+        carrinhosHtml += criarCardCarrinhoHtml(carrinho);
+    });
+    return carrinhosHtml;
+}
+
+function criarCardCarrinhoHtml(carrinho) {
+
+    return `
+        <tr>
+            <td>${carrinho.id}</td> 
+            <td>${carrinho.date}</td>
+            <td>${carrinho.status}</td>
+            <td>R$${carrinho.total}</td>
+            <td><button class="btn btn-small">Ver</button></td>
+        </tr>
+    `;
+}
