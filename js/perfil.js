@@ -181,14 +181,42 @@ function criarHtmlCarrinhos() {
 }
 
 function criarCardCarrinhoHtml(carrinho) {
+    var data = new Date(carrinho.date);
+    var dataFormatada = data.toLocaleDateString('pt-BR');
 
+    const total = carrinho.total.toLocaleString('pt-BR', { minimumFractionDigits: 2 })
     return `
         <tr>
             <td>${carrinho.id}</td> 
-            <td>${carrinho.date}</td>
-            <td>${carrinho.status}</td>
-            <td>R$${carrinho.total}</td>
-            <td><button class="btn btn-small">Ver</button></td>
+            <td>${dataFormatada}</td>
+            <td>${getStatus(carrinho.status)}</td>
+            <td>R$${total}</td>
+            <td>${carrinho.produtos.length}</td>
+            
         </tr>
     `;
+}
+
+function getStatus(status) {
+    if (status == "novo") {
+        return '<span class="badge text-bg-secondary">Novo</span>'
+    }
+    if (status == "Pedido Feito") {
+        return '<span class="badge text-bg-primary">Pedido Feito</span>'
+
+    }
+    if (status == "Em preparação") {
+        return '<span class="badge text-bg-info">Em Preparação</span'
+    }
+    if (status == "para entrega") {
+        return '<span class="badge text-bg-warning">Para entrega</span>'
+
+    }
+
+    if (status == "Finalizado") {
+        return '<span class="badge text-bg-success">Finalizado</span>'
+
+    } 
+    
+    return status
 }
