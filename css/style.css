@@ -1161,6 +1161,9 @@ max-width: 100%;
     border-radius: 20px;
 
 }
+.img-produtosdia{
+     height: 126px!important;
+}
 .item-produto .title{
 
     font-size: 16px;
@@ -1170,8 +1173,8 @@ padding: 16px 20px;
 }
 
 .item-produto .desc{
-    font-size: small;
-    
+    font-size: 12px;
+        height: 77px;
 }
 
 .item-produto .price {
